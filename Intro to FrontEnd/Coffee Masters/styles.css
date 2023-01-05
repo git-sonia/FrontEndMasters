@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --text: #9b6428;
+  --background: #efefef;
+  --header: #482619;
+  --section: #f0dfd2;
+  --dark-text: rgb(100, 93, 88);
+}
+.body {
+  background-color: var(--background);
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+.title {
+  position: relative;
+  font-size: smaller;
+}
+.header {
+  background-color: var(--header);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: #fbf0b8;
+}
+.logo {
+  max-height: 30px;
+  margin: 5px;
+  position: relative;
+  top: -1px;
+}
+.section {
+  background-color: var(--section);
+  margin: 10px;
+  padding: 10px;
+}
+.column {
+  width: 48%;
+}
+.section-flex {
+  display: flex;
+  justify-content: space-around;
+}
+.item {
+  display: flex;
+  padding-bottom: 50px;
+  border-bottom: 2px, solid, black;
+}
+.order-flex {
+  display: flex;
+  flex-direction: column;
+}
+.price {
+  position: absolute;
+  left: 42%;
+  color: var(--dark-text);
+  font-weight: bold;
+}
+.section-title,
+.toppings,
+.input-label {
+  color: var(--text);
+}
+.section-title {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.amount {
+  margin-right: 10px;
+}
+.toppings {
+  font-size: smaller;
+  margin-top: 5px;
+}
+.amount {
+  color: var(--dark-text);
+  margin-left: 10px;
+}
+.item-name {
+  color: var(--dark-text);
+  font-weight: bold;
+}
+.input {
+  margin-left: 10px;
+}

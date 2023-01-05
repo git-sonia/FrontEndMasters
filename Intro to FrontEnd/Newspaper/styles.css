@@ -1,0 +1,85 @@
+/*styles for newspaper*/
+* {
+  box-sizing: border-box;
+}
+.brand-header {
+  display: flex;
+  justify-content: center;
+  font-family: "Snell Roundhand";
+  font-size: x-large;
+  grid-area: brand-header;
+  margin: 0;
+}
+.nav-links {
+  grid-area: nav-links;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  border: 2px solid black;
+  align-items: center;
+  padding: 30px;
+  margin: 0;
+}
+.section-link {
+  font-weight: bold;
+  font-size: xx-large;
+}
+a:link {
+  color: grey;
+  text-decoration: none;
+}
+a:visited {
+  color: grey;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  color: gray;
+}
+.story-1 {
+  grid-area: story-1;
+  border-left: 2px solid black;
+}
+.story-2 {
+  grid-area: story-2;
+  border-left: 2px solid black;
+}
+.story-3 {
+  grid-area: story-3;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.story-4 {
+  grid-area: story-4;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.story-5 {
+  grid-area: story-5;
+  border: 2px solid black;
+}
+.article-title {
+  font-style: italic;
+  text-align: center;
+}
+.article-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 250px;
+}
+.story {
+  padding: 10px;
+}
+.page {
+  font-family: "PT Serif", serif;
+  display: grid;
+  grid-template-areas:
+    "brand-header brand-header brand-header"
+    "nav-links nav-links nav-links"
+    "story-1   story-2   story-3"
+    "story-4   story-5   story-5";
+  margin: 40px;
+}
