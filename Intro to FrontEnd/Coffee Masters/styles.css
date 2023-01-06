@@ -6,7 +6,9 @@
   --background: #efefef;
   --header: #482619;
   --section: #f0dfd2;
-  --dark-text: rgb(100, 93, 88);
+  --dark-text: rgb(88, 81, 77);
+  --border: #d6a774;
+  --shadow: rgb(218, 209, 205);
 }
 .body {
   background-color: var(--background);
@@ -34,7 +36,11 @@
 .section {
   background-color: var(--section);
   margin: 10px;
+  margin-bottom: 24px;
   padding: 10px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px var(--shadow), -4px 0px 4px var(--shadow);
+  height: fit-content;
 }
 .column {
   width: 48%;
@@ -45,8 +51,12 @@
 }
 .item {
   display: flex;
-  padding-bottom: 50px;
-  border-bottom: 2px, solid, black;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+}
+.item:last-child {
+  border: none;
 }
 .order-flex {
   display: flex;
@@ -64,7 +74,6 @@
   color: var(--text);
 }
 .section-title {
-  margin-bottom: 20px;
   margin-left: 10px;
 }
 .amount {
@@ -82,6 +91,46 @@
   color: var(--dark-text);
   font-weight: bold;
 }
-.input {
+.input-area {
   margin-left: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  position: relative;
+}
+.input {
+  width: 95%;
+  height: 44px;
+  border-radius: 100px;
+  border: 1px solid var(--text);
+  background-color: var(--section);
+}
+.input-label {
+  position: absolute;
+  font-size: small;
+  background-color: var(--section);
+  top: -7px;
+  left: 20px;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+.input::placeholder {
+  position: absolute;
+  font-size: larger;
+  left: 24px;
+  top: 12px;
+}
+.price-line {
+  display: flex;
+}
+.price-info {
+  margin-top: 200px;
+  grid-area: price-info;
+}
+.price-grid {
+  display: grid;
+  grid-template-areas: ". price-info .";
+}
+.total {
+  position: absolute;
+  right: 31%;
 }
