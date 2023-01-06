@@ -94,6 +94,7 @@
   color: var(--dark-text);
   font-weight: bold;
 }
+/*inputs*/
 .input-area {
   margin-left: 10px;
   margin-top: 25px;
@@ -133,11 +134,24 @@
 .price-labels {
   grid-area: price-labels;
 }
+.price-label {
+  margin-bottom: 16px;
+}
+.total {
+  margin-bottom: 16px;
+}
+.price-label:last-child {
+  font-weight: bold;
+}
+.total:last-child {
+  font-weight: bold;
+}
 .totals {
   grid-area: totals;
   justify-self: end;
   text-align: end;
 }
+/*button*/
 .button-area {
   display: flex;
   justify-content: center;
@@ -150,4 +164,6 @@
   border: none;
   font-size: 16px;
   color: var(--dark-text);
+  margin-bottom: 24px;
+  margin-top: 8px;
 }
