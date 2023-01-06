@@ -15,6 +15,7 @@
   font-family: "Montserrat", sans-serif;
   margin: 0;
 }
+/*header*/
 .title {
   position: relative;
   font-size: smaller;
@@ -33,6 +34,7 @@
   position: relative;
   top: -1px;
 }
+/*items and inputs*/
 .section {
   background-color: var(--section);
   margin: 10px;
@@ -119,18 +121,18 @@
   left: 24px;
   top: 12px;
 }
-.price-line {
-  display: flex;
-}
-.price-info {
-  margin-top: 200px;
-  grid-area: price-info;
-}
+/*totals*/
 .price-grid {
+  margin-top: 200px;
   display: grid;
-  grid-template-areas: ". price-info .";
+  grid-template-columns: 30% auto auto 30%;
+  grid-template-areas: ". price-labels totals .";
 }
-.total {
-  position: absolute;
-  right: 31%;
+.price-labels {
+  grid-area: price-labels;
+}
+.totals {
+  grid-area: totals;
+  justify-self: end;
+  text-align: end;
 }
