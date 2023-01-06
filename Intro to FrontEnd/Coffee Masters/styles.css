@@ -119,7 +119,8 @@
   position: absolute;
   font-size: larger;
   left: 24px;
-  top: 12px;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 /*totals*/
 .price-grid {
@@ -135,4 +136,6 @@
   grid-area: totals;
   justify-self: end;
   text-align: end;
+}
+.button {
 }
