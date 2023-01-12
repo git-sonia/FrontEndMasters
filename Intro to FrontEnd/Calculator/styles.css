@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --button-height: 100px;
+  --grid-width: calc(4 * 100px);
+  --result-height: calc(0.8 * var(--button-height));
+}
+body {
+  font-family: monospace;
+  font-size: xx-large;
+}
+button {
+  font-family: monospace;
+  font-size: xx-large;
+  font-weight: 500;
+}
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: var(--result-height) repeat(5, 100px);
+  grid-template-areas:
+    "result result result result"
+    "clear clear back-space operations"
+    "positive-numbers positive-numbers positive-numbers operations"
+    "positive-numbers positive-numbers positive-numbers operations"
+    "positive-numbers positive-numbers positive-numbers operations"
+    "zero-number zero-number zero-number operations";
+}
+.result {
+  grid-area: result;
+  background-color: black;
+  height: var(--result-height);
+  width: var(--grid-width);
+  color: white;
+  text-align: right;
+  padding-top: 30px;
+  padding-right: 8px;
+}
+.modifiers {
+  grid-area: modifiers;
+  display: flex;
+}
+.clear {
+  grid-area: clear;
+}
+.back-space {
+  grid-area: back-space;
+  transform: rotate(180deg);
+  font-size: 40px;
+  text-align: center;
+}
+.operation {
+  height: 100%;
+}
+.operations {
+  grid-area: operations;
+  display: flex;
+  flex-direction: column;
+}
+.positive-numbers {
+  grid-area: positive-numbers;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+.number {
+  width: var(--button-height);
+}
+.operations {
+  grid-area: operations;
+}
+.zero-number {
+  grid-area: zero-number;
+}
+.zero {
+  width: 100%;
+  height: 100%;
+}
