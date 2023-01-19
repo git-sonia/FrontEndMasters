@@ -1,3 +1,19 @@
 * {
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+:root {
+  --font: rgb(41, 41, 41);
+}
+body {
+  margin: 0pc;
+}
+.header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--font);
+  margin: auto;
+  padding: 30px 0px;
+  border-bottom: 2px solid black;
 }
