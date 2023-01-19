@@ -3,17 +3,38 @@
   font-family: "Roboto", sans-serif;
 }
 :root {
-  --font: rgb(41, 41, 41);
+  --font: rgb(49, 47, 47);
 }
 body {
   margin: 0pc;
-}
-.header {
-  text-align: center;
   font-weight: bold;
   font-size: 30px;
   color: var(--font);
+}
+.header {
+  text-align: center;
   margin: auto;
   padding: 30px 0px;
   border-bottom: 2px solid black;
+}
+.word-grid {
+  width: fit-content;
+  margin: auto;
+  margin-top: 60px;
+}
+.row {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+}
+.input {
+  margin-left: 14px;
+  height: 48px;
+  width: 48px;
+  border: 3px solid rgb(207, 206, 206);
+  text-align: center;
+}
+.input:first-child {
+  margin-left: 0px;
 }
