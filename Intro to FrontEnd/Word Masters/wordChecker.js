@@ -87,28 +87,27 @@ async function isWord(wordObject) {
   return validationJson.validWord;
 }
 function compareWord(word, inputs) {
+  let matchedIndices = [];
+  for (let i = 0; i < wordLength; i++) {
+    if (word[i] === wordOfTheDay[i]) {
+      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("match-letter");
+      matchedIndices.push(i);
+    } else {
+      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("mismatch-letter");
+    }
+  }
+  let unmatchedWord = "";
+  for (let i = 0; i < wordLength; i++) {
+    if (!matchedIndices.includes(i)) {
+      unmatchedWord += wordOfTheDay[i];
+    }
+  }
+  for (let i = 0; i < wordLength; i++) {
+    if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
+      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
+    } 
+  }
   if (word === wordOfTheDay) {
-    console.log("win");
-  } else {
-    let matchedIndices = [];
-    for (let i = 0; i < wordLength; i++) {
-      if (word[i] === wordOfTheDay[i]) {
-        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("match-letter");
-        matchedIndices.push(i);
-      } else {
-        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("mismatch-letter");
-      }
-    }
-    let unmatchedWord = "";
-    for (let i = 0; i < wordLength; i++) {
-      if (!matchedIndices.includes(i)) {
-        unmatchedWord += wordOfTheDay[i];
-      }
-    }
-    for (let i = 0; i < wordLength; i++) {
-      if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
-        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
-      } 
-    }
+    alert("win");
   }
 }
