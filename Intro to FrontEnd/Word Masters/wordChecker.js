@@ -56,12 +56,17 @@ function checkWord(word, inputs) {
     word: word
   }
   isWord(wordObject).then(function (isWordResult) {
+    const boxes = document.getElementsByClassName("row").item(tries).getElementsByClassName("input");
     if (isWordResult) {
-      console.log("is a valid word");
+      for (let i = 0; i < boxes.length; i++) {
+        boxes.item(i).classList.remove("not-valid-word");
+      }
       compareWord(word, inputs);
       submitWord();
     } else {
-      console.log("not a valid word");
+      for (let i = 0; i < boxes.length; i++) {
+        boxes.item(i).classList.add("not-valid-word");
+      }
     }
   })
 }
