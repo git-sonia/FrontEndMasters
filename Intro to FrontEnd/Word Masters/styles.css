@@ -39,3 +39,12 @@ body {
 .input:first-child {
   margin-left: 0px;
 }
+.match-letter {
+  background-color: green;
+}
+.mismatch-letter {
+  background-color: grey;
+}
+.includes-letter {
+  background-color: yellow;
+}

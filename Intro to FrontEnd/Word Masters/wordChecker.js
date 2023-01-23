@@ -10,6 +10,7 @@ const WORD_OF_DAY_URL = "https://words.dev-apis.com/word-of-the-day";
 let wordOfTheDay = "";
 getWord().then(function (word) {
   wordOfTheDay = word;
+  console.log(wordOfTheDay);
 });
 async function getWord() {
   const promise = await fetch(WORD_OF_DAY_URL);
@@ -21,15 +22,24 @@ document
   .querySelector("body")
   .addEventListener("keyup", event => {
     const inputs = rows[tries].querySelectorAll(".input");
-    const letter = event.key;
-    if (letter === "Enter" && letterCount === wordLength) {
-      checkWord(word);
+    const character = event.key;
+    if (character === "Backspace") {
+      removeLetter(inputs);
+    } else if (character === "Enter" && letterCount === wordLength) {
+      checkWord(word, inputs);
     } else if (letterCount < wordLength) {
-      if (isLetter(letter)) {
-        inputLetter(letter, inputs);
+      if (isLetter(character)) {
+        inputLetter(character, inputs);
       }
     }
   });
+function removeLetter(inputs) {
+  if (letterCount > 0) {
+    word = word.slice(0, -1);
+    letterCount--;
+    inputs[letterCount].innerHTML = "";
+  }
+}
 function inputLetter(letter, inputs) {
   word += letter;
   inputs[letterCount].innerHTML = letter.toUpperCase();
@@ -41,16 +51,17 @@ function isLetter(letter) {
 function losingScreen() {
   alert("lost");
 }
-function checkWord(word) {
+function checkWord(word, inputs) {
   const wordObject = {
     word: word
   }
   isWord(wordObject).then(function (isWordResult) {
     if (isWordResult) {
-      console.log("is word");
+      console.log("is a valid word");
+      compareWord(word, inputs);
       submitWord();
     } else {
-      console.log("not word");
+      console.log("not a valid word");
     }
   })
 }
@@ -69,4 +80,30 @@ async function isWord(wordObject) {
   })
   const validationJson = await promise.json();
   return validationJson.validWord;
+}
+function compareWord(word, inputs) {
+  if (word === wordOfTheDay) {
+    console.log("win");
+  } else {
+    let matchedIndices = [];
+    for (let i = 0; i < wordLength; i++) {
+      if (word[i] === wordOfTheDay[i]) {
+        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("match-letter");
+        matchedIndices.push(i);
+      } else {
+        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("mismatch-letter");
+      }
+    }
+    let unmatchedWord = "";
+    for (let i = 0; i < wordLength; i++) {
+      if (!matchedIndices.includes(i)) {
+        unmatchedWord += wordOfTheDay[i];
+      }
+    }
+    for (let i = 0; i < wordLength; i++) {
+      if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
+        document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
+      } 
+    }
+  }
 }
