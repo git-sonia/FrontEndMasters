@@ -20,7 +20,6 @@ body {
 .word-grid {
   width: fit-content;
   margin: auto;
-  margin-top: 60px;
 }
 .row {
   width: fit-content;
@@ -49,5 +48,78 @@ body {
   background-color: yellow;
 }
 .not-valid-word {
-  border: 3px solid rgb(245, 49, 31);
+  animation: not-valid 1s linear;
+}
+@keyframes not-valid {
+  0% {
+    border: 3px solid rgb(245, 49, 31);
+  }
+  100% {
+    border: 3px solid rgb(207, 206, 206);
+  }
+}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid darkslategrey;
+  border-right: 8px solid darkslategrey;
+  border-bottom: 8px solid darkslategrey;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin: 12px auto;
+  animation: spin 1.5s linear infinite;
+  visibility: hidden;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.display {
+  visibility: visible;
+}
+.rainbow {
+  animation: rainbow 2.5s linear infinite;
+}
+@keyframes rainbow {
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  8% {
+    color: rgb(255, 127, 0);
+  }
+  16% {
+    color: rgb(255, 255, 0);
+  }
+  25% {
+    color: rgb(127, 255, 0);
+  }
+  33% {
+    color: rgb(0, 255, 0);
+  }
+  41% {
+    color: rgb(0, 255, 127);
+  }
+  50% {
+    color: rgb(0, 255, 255);
+  }
+  58% {
+    color: rgb(0, 127, 255);
+  }
+  66% {
+    color: rgb(0, 0, 255);
+  }
+  75% {
+    color: rgb(127, 0, 255);
+  }
+  83% {
+    color: rgb(255, 0, 255);
+  }
+  91% {
+    color: rgb(255, 0, 127);
+  }
 }

@@ -5,12 +5,13 @@ const wordLength = 5;
 const totalTries = 6;
 const rows = document.querySelectorAll(".row");
 const VALIDATE_WORD_URL = "https://words.dev-apis.com/validate-word";
-const WORD_OF_DAY_URL = "https://words.dev-apis.com/word-of-the-day";
+const WORD_OF_DAY_URL = "https://words.dev-apis.com/word-of-the-day?random=1";
+const loader = document.querySelector(".loader");
 
 let wordOfTheDay = "";
 getWord().then(function (word) {
   wordOfTheDay = word;
-  console.log(wordOfTheDay);
+  /*console.log(wordOfTheDay);*/
 });
 async function getWord() {
   const promise = await fetch(WORD_OF_DAY_URL);
@@ -49,7 +50,7 @@ function isLetter(letter) {
   return /^[a-zA-Z]$/.test(letter);
 }
 function losingScreen() {
-  alert("lost");
+  alert("You lost, word was " + wordOfTheDay);
 }
 function checkWord(word, inputs) {
   const wordObject = {
@@ -79,11 +80,13 @@ function submitWord() {
   }
 } 
 async function isWord(wordObject) {
+  displayLoader();
   const promise = await fetch(VALIDATE_WORD_URL, {
     method: "POST",
     body: JSON.stringify(wordObject)
   })
   const validationJson = await promise.json();
+  hideLoader();
   return validationJson.validWord;
 }
 function compareWord(word, inputs) {
@@ -108,6 +111,17 @@ function compareWord(word, inputs) {
     } 
   }
   if (word === wordOfTheDay) {
-    alert("win");
+    alert("You win!");
+    win();
   }
+}
+function win() {
+  const title = document.querySelector(".header");
+  title.classList.add("rainbow");
+}
+function displayLoader() {
+  loader.classList.add("display");
+}
+function hideLoader() {
+  loader.classList.remove("display");
 }
