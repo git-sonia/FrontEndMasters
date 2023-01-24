@@ -8,6 +8,7 @@ const VALIDATE_WORD_URL = "https://words.dev-apis.com/validate-word";
 const WORD_OF_DAY_URL = "https://words.dev-apis.com/word-of-the-day?random=1";
 const loader = document.querySelector(".loader");
 
+
 let wordOfTheDay = "";
 getWord().then(function (word) {
   wordOfTheDay = word;
@@ -57,19 +58,27 @@ function checkWord(word, inputs) {
     word: word
   }
   isWord(wordObject).then(function (isWordResult) {
-    const boxes = document.getElementsByClassName("row").item(tries).getElementsByClassName("input");
     if (isWordResult) {
-      for (let i = 0; i < boxes.length; i++) {
-        boxes.item(i).classList.remove("not-valid-word");
-      }
       compareWord(word, inputs);
       submitWord();
     } else {
-      for (let i = 0; i < boxes.length; i++) {
-        boxes.item(i).classList.add("not-valid-word");
-      }
+      const boxes = document.getElementsByClassName("row").item(tries).getElementsByClassName("input");
+      showNotValid(boxes);
+      resetNotValid(boxes);
     }
   })
+}
+function showNotValid(boxes) {
+  for (let i = 0; i < boxes.length; i++) {
+    boxes.item(i).classList.add("not-valid-word");
+  }
+}
+function resetNotValid(boxes) {
+  for (let i = 0; i < boxes.length; i++) {
+    boxes.item(i).onanimationend = () => {
+      boxes.item(i).classList.remove("not-valid-word");
+    }
+  }
 }
 function submitWord() {
   letterCount = 0;
