@@ -12,9 +12,11 @@ const loader = document.querySelector(".loader");
 let wordOfTheDay = "";
 getWord().then(function (word) {
   wordOfTheDay = word;
+  hideLoader();
   /*console.log(wordOfTheDay);*/
 });
 async function getWord() {
+  displayLoader();
   const promise = await fetch(WORD_OF_DAY_URL);
   const wordObject = await promise.json();
   let word = wordObject.word
@@ -101,12 +103,14 @@ async function isWord(wordObject) {
 function compareWord(word, inputs) {
   let matchedIndices = [];
   for (let i = 0; i < wordLength; i++) {
+    let input = document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i);
     if (word[i] === wordOfTheDay[i]) {
-      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("match-letter");
+      input.classList.add("match-letter");
       matchedIndices.push(i);
     } else {
-      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("mismatch-letter");
+      input.classList.add("mismatch-letter");
     }
+    input.classList.add("white-font");
   }
   let unmatchedWord = "";
   for (let i = 0; i < wordLength; i++) {

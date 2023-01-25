@@ -11,6 +11,9 @@ body {
   font-size: 30px;
   color: var(--font);
 }
+.white-font {
+  color: white;
+}
 .header {
   text-align: center;
   margin: auto;
@@ -39,13 +42,13 @@ body {
   margin-left: 0px;
 }
 .match-letter {
-  background-color: green;
+  background-color: #006400;
 }
 .mismatch-letter {
-  background-color: grey;
+  background-color: #888888;
 }
 .includes-letter {
-  background-color: yellow;
+  background-color: #daa521;
 }
 .not-valid-word {
   animation: not-valid 1s linear;
