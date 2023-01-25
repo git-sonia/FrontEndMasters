@@ -1,8 +1,10 @@
 let letterCount = 0;
 let tries = 0;
 let word = "";
-const wordLength = 5;
-const totalTries = 6;
+let done = false;
+let isLoading = false;
+const WORD_LENGTH = 5;
+const TOTAL_TRIES = 6;
 const rows = document.querySelectorAll(".row");
 const VALIDATE_WORD_URL = "https://words.dev-apis.com/validate-word";
 const WORD_OF_DAY_URL = "https://words.dev-apis.com/word-of-the-day?random=1";
@@ -13,10 +15,12 @@ let wordOfTheDay = "";
 getWord().then(function (word) {
   wordOfTheDay = word;
   hideLoader();
+  isLoading = false;
   /*console.log(wordOfTheDay);*/
 });
 async function getWord() {
   displayLoader();
+  isLoading = true;
   const promise = await fetch(WORD_OF_DAY_URL);
   const wordObject = await promise.json();
   let word = wordObject.word
@@ -25,13 +29,16 @@ async function getWord() {
 document
   .querySelector("body")
   .addEventListener("keyup", event => {
+    if (done || isLoading) {
+      return;
+    }
     const inputs = rows[tries].querySelectorAll(".input");
     const character = event.key;
     if (character === "Backspace") {
       removeLetter(inputs);
-    } else if (character === "Enter" && letterCount === wordLength) {
+    } else if (character === "Enter" && letterCount === WORD_LENGTH) {
       checkWord(word, inputs);
-    } else if (letterCount < wordLength) {
+    } else if (letterCount < WORD_LENGTH) {
       if (isLetter(character)) {
         inputLetter(character, inputs);
       }
@@ -54,6 +61,7 @@ function isLetter(letter) {
 }
 function losingScreen() {
   alert("You lost, word was " + wordOfTheDay);
+  done = true;
 }
 function checkWord(word, inputs) {
   const wordObject = {
@@ -86,23 +94,25 @@ function submitWord() {
   letterCount = 0;
   tries++;
   word = "";
-  if (tries === totalTries) {
+  if (tries === TOTAL_TRIES) {
     losingScreen();
   }
 } 
 async function isWord(wordObject) {
   displayLoader();
+  isLoading = true;
   const promise = await fetch(VALIDATE_WORD_URL, {
     method: "POST",
     body: JSON.stringify(wordObject)
   })
   const validationJson = await promise.json();
   hideLoader();
+  isLoading = false;
   return validationJson.validWord;
 }
 function compareWord(word, inputs) {
   let matchedIndices = [];
-  for (let i = 0; i < wordLength; i++) {
+  for (let i = 0; i < WORD_LENGTH; i++) {
     let input = document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i);
     if (word[i] === wordOfTheDay[i]) {
       input.classList.add("match-letter");
@@ -113,12 +123,12 @@ function compareWord(word, inputs) {
     input.classList.add("white-font");
   }
   let unmatchedWord = "";
-  for (let i = 0; i < wordLength; i++) {
+  for (let i = 0; i < WORD_LENGTH; i++) {
     if (!matchedIndices.includes(i)) {
       unmatchedWord += wordOfTheDay[i];
     }
   }
-  for (let i = 0; i < wordLength; i++) {
+  for (let i = 0; i < WORD_LENGTH; i++) {
     if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
       document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
     } 
@@ -126,6 +136,7 @@ function compareWord(word, inputs) {
   if (word === wordOfTheDay) {
     alert("You win!");
     win();
+    done = true;
   }
 }
 function win() {
