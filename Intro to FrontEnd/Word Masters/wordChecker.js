@@ -16,7 +16,7 @@ getWord().then(function (word) {
   wordOfTheDay = word;
   hideLoader();
   isLoading = false;
-  /*console.log(wordOfTheDay);*/
+  console.log(wordOfTheDay);
 });
 async function getWord() {
   displayLoader();
@@ -91,13 +91,20 @@ function resetNotValid(boxes) {
   }
 }
 function submitWord() {
+  if (word === wordOfTheDay) {
+    winningScreen();
+  } else if (tries === TOTAL_TRIES) {
+    losingScreen();
+  }
   letterCount = 0;
   tries++;
   word = "";
-  if (tries === TOTAL_TRIES) {
-    losingScreen();
-  }
 } 
+function winningScreen() {
+  alert("You win!");
+  win();
+  done = true;
+}
 async function isWord(wordObject) {
   displayLoader();
   isLoading = true;
@@ -132,11 +139,6 @@ function compareWord(word, inputs) {
     if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
       document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
     } 
-  }
-  if (word === wordOfTheDay) {
-    alert("You win!");
-    win();
-    done = true;
   }
 }
 function win() {
