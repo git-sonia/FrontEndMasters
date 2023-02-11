@@ -60,6 +60,7 @@ function isLetter(letter) {
   return /^[a-zA-Z]$/.test(letter);
 }
 function losingScreen() {
+  console.log("You lost, word was " + wordOfTheDay);
   alert("You lost, word was " + wordOfTheDay);
   done = true;
 }
@@ -93,7 +94,7 @@ function resetNotValid(boxes) {
 function submitWord() {
   if (word === wordOfTheDay) {
     winningScreen();
-  } else if (tries === TOTAL_TRIES) {
+  } else if (tries === TOTAL_TRIES - 1) {
     losingScreen();
   }
   letterCount = 0;
@@ -119,27 +120,36 @@ async function isWord(wordObject) {
 }
 function compareWord(word, inputs) {
   let matchedIndices = [];
+  let wordFrequencies = mapWord(word);
+  let wordOfTheDayFrequencies = mapWord(wordOfTheDay);
   for (let i = 0; i < WORD_LENGTH; i++) {
     let input = document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i);
     if (word[i] === wordOfTheDay[i]) {
       input.classList.add("match-letter");
       matchedIndices.push(i);
+      wordOfTheDayFrequencies[wordOfTheDay[i]]--;
+      wordFrequencies[word[i]]--;
     } else {
       input.classList.add("mismatch-letter");
     }
     input.classList.add("white-font");
   }
-  let unmatchedWord = "";
   for (let i = 0; i < WORD_LENGTH; i++) {
-    if (!matchedIndices.includes(i)) {
-      unmatchedWord += wordOfTheDay[i];
+    if (!matchedIndices.includes(i) && wordOfTheDayFrequencies[word[i]] > 0 && wordOfTheDay.includes(word[i]))
+      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
+      wordOfTheDayFrequencies[wordOfTheDay[i]]--;
+  }
+}
+function mapWord(word) {
+  let wordFrequencies = {};
+  for (let i = 0; i < WORD_LENGTH; i++) {
+    if (!(word[i] in wordFrequencies)) {
+      wordFrequencies[word[i]] = 1;
+    } else {
+      wordFrequencies[word[i]]++;
     }
   }
-  for (let i = 0; i < WORD_LENGTH; i++) {
-    if (!matchedIndices.includes(i) && unmatchedWord.includes(word[i])) {
-      document.getElementsByClassName("row").item(tries).getElementsByClassName("input").item(i).classList.add("includes-letter");
-    } 
-  }
+  return wordFrequencies;
 }
 function win() {
   const title = document.querySelector(".header");
