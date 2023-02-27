@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+      <ul>
+        <li>
+          <h1>
+            <a href="index.html">
+              <span class="fas fa-code" aria-hidden="true"></span>
+              <span>Sonia Thakur</span>
+            </a>
+          </h1>
+        </li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="www.linkedin.com/in/t-sonia" target="_blank">
+            <span class="fab fa-linkedin" aria-hidden="true"></span>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/git-sonia" target="_blank">
+            <span class="fab fa-github-square" aria-hidden="true"></span>
+            <span class="sr-only">Github</span>
+          </a>
+        </li>
+        <li><a href="www.linkedin.com/in/t-sonia" target="_blank" class="button">Resume</a></li>
+      </ul>
+    </nav>
+
+
+  <section id="intro">
+    <p class="name">Hi, my name is <span>Sonia Thakur.</span></p>
+
+    <h2>I create digital experiences.</h2>
+
+    <p>I'm a developer specializing in HTML, CSS and Javascript.</p>
+
+    <p>Currently, I'm taking courses on <a href="https://frontendmasters.com/">FrontEndMasters</a>.</p>
+  </section>
+  <div class="gradient"></div>
+
+  <!-- Projects -->
+  <div class="section-blue">
+    <section id="projects">
+      <h2>Projects I'm proud of</h2>
+      <article>
+        <div class="text">
+          <h4>Latest Project</h4>
+          <h3>Word Masters</h3>
+          <p class="blackbox">Simulation of Wordle made to practice API skills. Used a GET request to retreive the word to be guessed and a POST request to check if the word inputted is valid. <a href="https://github.com/git-sonia/FrontEndMasters/tree/main/Intro%20to%20FrontEnd/Word%20Masters">Link to Word Masters Project</a>.</p>
+          <h4>Technologies used include:</h4>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>API</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <img src="imgs/word_masters.png" alt="Screenshot of the Word Masters." />
+      </article>
+      <article class="reverse">
+        <div class="text">
+          <h4>Frontend Masters Project</h4>
+          <h3>Calculator</h3>
+          <p class="blackbox">
+            Calculator made to practice Javascript skills. Used event bubbling to handle inputs, then delegated operations to functions.
+            <a href="https://github.com/git-sonia/FrontEndMasters/tree/main/Intro%20to%20FrontEnd/Calculator">Link to Calculator Project</a>.</p>
+          </p>
+          <h4>Technologies used include:</h4>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <img src="imgs/calculator.png" alt="Screenshot of Calculator Project." />
+      </article>
+      <article>
+        <div class="text">
+          <h4>Photography Project</h4>
+          <h3>Coffee Masters</h3>
+          <p class="blackbox">
+            Coffee website made to practice CSS skills. Used flexbox for the items and grid for the totals.
+            <a href="https://github.com/git-sonia/FrontEndMasters/tree/main/Intro%20to%20FrontEnd/Coffee%20Masters">Link to Coffee Masters Project</a>.</p>
+          </p>
+          <h4>Technologies used include:</h4>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS Grid</li>
+            <li>CSS Flexbox</li>
+          </ul>
+        </div>
+          <img src="imgs/coffee_masters.png" alt="Screenshot of Coffee Masters." />
+      </article>
+    </section>
+  </div>
+
+  <div class="gradient"></div>
+
+  <div class="section-plum">
+    <section id="contact">
+      <h2>Contact me</h2>
+      
+      <p>I'm always interested in hearing about new development opportunites.</p>
+      
+      <p><a href="www.linkedin.com/in/t-sonia" class="button">Email me</a></p>
+    </section>
+  </div>
+  
+  <div class="gradient"></div>
+  <footer>
+    <h2>Sonia Thakur &middot; Developer</h2>
+    <ul>
+      <li>
+        <a href="www.linkedin.com/in/t-sonia" target="_blank">
+          <span class="fab fa-linkedin" aria-hidden="true"></span>
+          <span class="sr-only">LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/git-sonia" target="_blank">
+          <span class="fab fa-github-square" aria-hidden="true"></span>
+          <span class="sr-only">Github</span>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:tsonia5987@gmail.com">
+          <span class="fas fa-envelope" aria-hidden="true"></span>
+          <span class="sr-only">Email</span>
+        </a>
+      </li>
+    </ul>
+    <p><small>&copy; 2023 Sonia Thakur. All rights reserved.</small></p>
+  </footer>
+</body>
+</html>
