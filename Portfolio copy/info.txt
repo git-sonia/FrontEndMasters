@@ -1,9 +1,0 @@
-Coffee Masters
-- Coffee website made to practice CSS skills. Used flexbox for the items and grid for the totals.
-Calculator
-- Calculator made to practice Javascript skills. Used event bubbling to handle inputs, then delegated operations to functions.
-Word Masters
-- Simulation of Wordle made to practice API skills. Used a GET request to retreive the word to be guessed and a POST request to check if the word inputted is valid.
-
-LinkedIn: www.linkedin.com/in/t-sonia
-Github: https://github.com/git-sonia
