@@ -3,6 +3,26 @@
   padding: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  .main {
+    background-color: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .main {
+    background-color: white;
+  }
+}
+
+.dark-background {
+  background-color: black;
+}
+
+.light-background {
+  background-color: white;
+}
+
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
     Helvetica, Arial, "Lucida Grande", sans-serif;
