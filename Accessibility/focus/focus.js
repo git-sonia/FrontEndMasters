@@ -7,9 +7,3 @@ document.addEventListener("keyup", (e) => {
     skipButton.focus(); 
   }
 })
-
-skipButton.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    buttonLand.focus();
-  }
-})
