@@ -13,14 +13,16 @@ body {
   position: absolute;
   top: -100px;
   left: 50px;
-  animation: slide-down 2s;
+  transition: top 1s;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  border-radius: 10px;
 }
 
-@keyframes slide-down {
-  100% {
-    top: 100px;
-    left: 50px;
-  }
+#skip:focus {
+  top: 100px;
+  left: 50px;
 }
 
 .hidden {
