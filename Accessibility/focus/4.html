@@ -7,7 +7,9 @@
     <title>Screen Readers</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
+  
   <body>
+    <a tabindex="0" id="skip"  href="#button-land" class="hidden" >Skip to Content</a>
     <header>
       <ul>
         <li><a href="../index.html">Home</a></li>
@@ -42,7 +44,8 @@
         Let's make a skip link so that user's tabbing through can skip right
         over the navigation and get to this main content!
       </p>
-      <button>Skip to here!</button>
+      <button id="button-land">Skip to here!</button>
     </div>
+    <script src="focus.js"></script>
   </body>
 </html>

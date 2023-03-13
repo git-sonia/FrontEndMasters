@@ -9,6 +9,23 @@ body {
   font-weight: 300;
   font-size: 22px;
 }
+#skip {
+  position: absolute;
+  top: -100px;
+  left: 50px;
+  animation: slide-down 2s;
+}
+
+@keyframes slide-down {
+  100% {
+    top: 100px;
+    left: 50px;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
 
 #container li {
   margin: 10px 0;
